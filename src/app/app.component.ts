@@ -8,6 +8,7 @@ import { DatePipe } from '@angular/common';
   providers: [DatePipe]
 })
 export class AppComponent {
+  title = 'actividad-10';
   date = new Date();
   fecha_input:string = this.date.getFullYear()+"-0"+(this.date.getMonth() + 1)+"-0"+this.date.getDate();
   fecha_status = false;
