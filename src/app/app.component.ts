@@ -110,6 +110,7 @@ export class AppComponent {
         }else if(this.operando === "÷"){
           this.numero_anterior = String(parseFloat(this.numero_anterior) / parseFloat(this.numero_actual))
         }
+        console.log(this.numero_anterior);
 
         this.operando = "";
         this.numero_actual = "";
