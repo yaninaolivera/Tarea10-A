@@ -8,8 +8,10 @@ import { DatePipe } from '@angular/common';
   providers: [DatePipe]
 })
 export class AppComponent {
+  date = new Date();
+  fecha_input:string = this.date.getFullYear()+"-0"+(this.date.getMonth() + 1)+"-0"+this.date.getDate();
+  fecha_status = false;
   fecha: string;
-
   constructor(private datePipe: DatePipe) {
     const fechaFormateada = this.datePipe.transform(new Date(), 'EEEE MMMM d, Y');
     this.fecha = fechaFormateada ? fechaFormateada : '';
@@ -78,6 +80,9 @@ export class AppComponent {
         this.numero_actual = this.numero_anterior;
         this.numero_anterior = ""
       }
+      if(this.numero_actual === "" && this.numero_anterior === ""){
+        this.numero_actual = "0";
+      }
     }
     if(tipo === "clear"){
       this.numero_anterior = "";
@@ -123,8 +128,22 @@ export class AppComponent {
       }
     }
 
+    if(tipo === "calendar"){
+      if(this.fecha_status === true){
+        this.fecha_status = false;
+      }else{
+        this.fecha_status = true;
+      }
+    }
+
     if(this.operando === ""){
       this.icono_resultado = "fa fa-check";
     }
+  }
+
+  actualizar_fecha() {
+    const fechaFormateada = this.datePipe.transform(this.fecha_input, 'EEEE MMMM d, Y');
+    this.fecha = fechaFormateada ? fechaFormateada : '';
+    this.fecha_status = false;
   }
 }

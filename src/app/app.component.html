@@ -23,7 +23,7 @@
         <button type="button" class="btn" (click)="numero('1')"> 1 </button>
         <button type="button" class="btn" (click)="numero('4')"> 4 </button>
         <button type="button" class="btn" (click)="numero('7')"> 7 </button>
-        <button type="button" class="btn"><i class="fa fa-calendar-day"></i></button>
+        <button type="button" class="btn" (click)="operacion('calendar')"><i class="fa fa-calendar-day"></i></button>
       </div>
       <div class="g3">
         <button type="button" class="btn" (click)="numero('2')"> 2 </button>
@@ -45,6 +45,6 @@
         </button>
       </div>
     </div>
-    <div class="date">{{fecha}}</div>
+    <div class="date">{{fecha}} <input type="date" class="form-control" *ngIf="fecha_status" [(ngModel)]="fecha_input" (change)="actualizar_fecha()"></div>
   </div>
 </div>
